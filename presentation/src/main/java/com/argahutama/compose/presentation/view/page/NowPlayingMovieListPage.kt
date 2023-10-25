@@ -8,8 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -22,10 +20,12 @@ import com.argahutama.compose.presentation.viewmodel.NowPlayingMovieListViewMode
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun NowPlayingMovieListPage(viewModel: NowPlayingMovieListViewModel = hiltViewModel()) {
+fun NowPlayingMovieListPage(
+    viewModel: NowPlayingMovieListViewModel = hiltViewModel(),
+    navigateToDetail: (String) -> Unit,
+) {
     val context = LocalContext.current
     val state = viewModel.state.collectAsStateWithLifecycle()
-    val query = remember { mutableStateOf("") }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.fetchData()
@@ -53,7 +53,10 @@ fun NowPlayingMovieListPage(viewModel: NowPlayingMovieListViewModel = hiltViewMo
             }
         } else {
             items(state.value.data, key = { it.id }) { movie ->
-                MovieCardItem(movie = movie)
+                MovieCardItem(
+                    movie = movie,
+                    navigateToDetail = navigateToDetail,
+                )
             }
         }
     }

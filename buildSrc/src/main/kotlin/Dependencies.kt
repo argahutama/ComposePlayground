@@ -58,6 +58,7 @@ object PresentationLibraries {
     const val composeTooling = "androidx.compose.ui:ui-tooling"
     const val composeTestManifest = "androidx.compose.ui:ui-test-manifest"
     const val composeRuntime = "androidx.lifecycle:lifecycle-runtime-compose:2.6.0"
+    const val composeNav = "androidx.navigation:navigation-compose:2.6.0"
     const val coilImage = "io.coil-kt:coil-compose:2.4.0"
     const val composeShimmer = "com.valentinilk.shimmer:compose-shimmer:1.2.0"
 }

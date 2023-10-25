@@ -9,12 +9,15 @@ import com.argahutama.compose.common.theme.util.showToast
 import com.argahutama.compose.presentation.viewmodel.MovieDetailsViewModel
 
 @Composable
-fun MovieDetailsPage(viewModel: MovieDetailsViewModel = hiltViewModel()) {
+fun MovieDetailsPage(
+    id: String,
+    viewModel: MovieDetailsViewModel = hiltViewModel()
+) {
     val context = LocalContext.current
     val state = viewModel.state.collectAsStateWithLifecycle()
 
-
     LaunchedEffect(key1 = Unit) {
+        viewModel.fetchData(id)
         viewModel.errorMessage.collect { message ->
             if (!message.isNullOrEmpty()) {
                 context.showToast(message)

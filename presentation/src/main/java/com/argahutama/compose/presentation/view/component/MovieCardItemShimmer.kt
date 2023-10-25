@@ -18,6 +18,6 @@ fun MovieCardItemShimmer(modifier: Modifier = Modifier) {
             .shimmer()
             .padding(bottom = 5.dp)
     ) {
-        MovieCardItem(movie = MovieEntity())
+        MovieCardItem(movie = MovieEntity()) {}
     }
 }

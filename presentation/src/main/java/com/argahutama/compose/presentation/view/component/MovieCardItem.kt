@@ -1,5 +1,6 @@
 package com.argahutama.compose.presentation.view.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,13 +22,20 @@ import com.argahutama.compose.domain.entity.MovieEntity
 fun MovieCardItem(
     modifier: Modifier = Modifier,
     movie: MovieEntity,
+    navigateToDetail: (String) -> Unit
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
         shadowElevation = 4.dp
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .padding(16.dp)
+                .clickable {
+                    if (movie.id.isNotEmpty()) {
+                        navigateToDetail(movie.id)
+                    }
+                }
         ) {
             Text(
                 text = movie.title,

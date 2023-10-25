@@ -43,6 +43,7 @@ private fun DependencyHandler.includePresentationDependencies() {
     implementation(PresentationLibraries.composeUiToolingPreview)
     implementation(PresentationLibraries.composeUiMaterial)
     implementation(PresentationLibraries.composeRuntime)
+    implementation(PresentationLibraries.composeNav)
     implementation(PresentationLibraries.coilImage)
     implementation(PresentationLibraries.composeShimmer)
     debugImplementation(PresentationLibraries.composeTooling)

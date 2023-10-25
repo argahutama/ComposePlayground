@@ -6,11 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.argahutama.compose.common.theme.MyApplicationTheme
+import com.argahutama.compose.common.theme.route.Screen
+import com.argahutama.compose.presentation.view.page.MovieDetailsPage
 import com.argahutama.compose.presentation.view.page.NowPlayingMovieListPage
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +28,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    NowPlayingMovieListPage()
+                    val navController = rememberNavController()
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.NowPlayingMovieList.route,
+                    ) {
+                        composable(
+                            route = Screen.NowPlayingMovieList.route
+                        ) {
+                            NowPlayingMovieListPage {
+                                navController.navigate(Screen.MovieDetails.createRoute(it))
+                            }
+                        }
+                        composable(
+                            route = Screen.MovieDetails.route,
+                            arguments = listOf(
+                                navArgument("id") {
+                                    type = NavType.StringType
+                                }
+                            ),
+                        ) {
+                            val id = it.arguments?.getString("id").orEmpty()
+                            MovieDetailsPage(id)
+                        }
+                    }
                 }
             }
         }
