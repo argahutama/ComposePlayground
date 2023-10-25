@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.argahutama.compose.domain.entity.MovieEntity
@@ -54,7 +56,10 @@ fun MovieCardItem(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = movie.overview,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Justify,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }

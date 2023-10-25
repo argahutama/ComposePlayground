@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "${ApplicationId.id}.convert"
+    namespace = "${ApplicationId.id}.presentation"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
