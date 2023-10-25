@@ -17,8 +17,8 @@ object Versions {
         get() = "${Versions.versionMajor}.${Versions.versionMedium}.${Versions.versionMinor}"
 
     const val androidMinSdkVersion = 24
-    const val androidTargetSdkVersion = 33
-    const val androidCompileSdkVersion = 33
+    const val androidTargetSdkVersion = 34
+    const val androidCompileSdkVersion = 34
 
     const val kotlin = "1.8.10"
     const val retrofit = "2.9.0"
@@ -58,6 +58,8 @@ object PresentationLibraries {
     const val composeTooling = "androidx.compose.ui:ui-tooling"
     const val composeTestManifest = "androidx.compose.ui:ui-test-manifest"
     const val composeRuntime = "androidx.lifecycle:lifecycle-runtime-compose:2.6.0"
+    const val coilImage = "io.coil-kt:coil-compose:2.4.0"
+    const val composeShimmer = "com.valentinilk.shimmer:compose-shimmer:1.2.0"
 }
 
 object DataLibraries {

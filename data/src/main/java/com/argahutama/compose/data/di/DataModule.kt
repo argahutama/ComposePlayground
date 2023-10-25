@@ -1,6 +1,6 @@
 package com.argahutama.compose.data.di
 
-import android.content.Context
+import com.argahutama.compose.data.BuildConfig
 import com.argahutama.compose.data.repository.MovieRepositoryImpl
 import com.argahutama.compose.data.source.remote.MovieService
 import com.argahutama.compose.data.util.Constants
@@ -9,10 +9,9 @@ import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -27,20 +26,18 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideCache(@ApplicationContext context: Context): Cache {
-        val cacheSize: Long = 10 * 1024 * 1024
-        return Cache(context.cacheDir, cacheSize)
-    }
-
-    @Singleton
-    @Provides
-    fun provideClient(cache: Cache): OkHttpClient =
-        OkHttpClient.Builder()
+    fun provideClient(): OkHttpClient {
+        val builder = OkHttpClient.Builder()
             .readTimeout(Constants.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .connectTimeout(Constants.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .writeTimeout(Constants.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .cache(cache)
-            .build()
+
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(HttpLoggingInterceptor())
+        }
+
+        return builder.build()
+    }
 
     @Singleton
     @Provides
@@ -51,7 +48,8 @@ class DataModule {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl("https://api.themoviedb.org/3/")
-            .client(client).build()
+            .client(client)
+            .build()
 
     @Singleton
     @Provides

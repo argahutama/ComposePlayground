@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Compose Movie App</string>
+    <string name="search_movie_hint">Search movies</string>
 </resources>
