@@ -20,8 +20,12 @@ internal fun Project.commonDependenciesSetup() {
         includeTestDependencies()
 
         implementation(DependencyInjectionLibraries.hilt)
+        implementation(DependencyInjectionLibraries.hiltWork)
+        implementation(DependencyInjectionLibraries.workRuntime)
+        implementation(DependencyInjectionLibraries.hiltNavigationCompose)
 
         add("kapt", DependencyInjectionLibraries.hiltAndroidCompiler)
+        add("kapt", DependencyInjectionLibraries.hiltCompiler)
     }
 }
 
@@ -38,6 +42,7 @@ private fun DependencyHandler.includePresentationDependencies() {
     implementation(PresentationLibraries.composeUiGraphics)
     implementation(PresentationLibraries.composeUiToolingPreview)
     implementation(PresentationLibraries.composeUiMaterial)
+    implementation(PresentationLibraries.composeRuntime)
     debugImplementation(PresentationLibraries.composeTooling)
     debugImplementation(PresentationLibraries.composeTestManifest)
 }

@@ -57,6 +57,7 @@ object PresentationLibraries {
     const val composeUiMaterial = "androidx.compose.material3:material3"
     const val composeTooling = "androidx.compose.ui:ui-tooling"
     const val composeTestManifest = "androidx.compose.ui:ui-test-manifest"
+    const val composeRuntime = "androidx.lifecycle:lifecycle-runtime-compose:2.6.0"
 }
 
 object DataLibraries {
@@ -71,4 +72,8 @@ object DataLibraries {
 object DependencyInjectionLibraries {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltWork = "androidx.hilt:hilt-work:1.0.0"
+    const val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0"
+    const val workRuntime = "androidx.work:work-runtime-ktx:2.8.0"
+    const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
 }
