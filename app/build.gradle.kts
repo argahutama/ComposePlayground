@@ -19,7 +19,7 @@ android {
     namespace = "${ApplicationId.id}.playground"
 
     compileSdk = Versions.androidCompileSdkVersion
-    buildToolsVersion = "30.0.3"
+    buildToolsVersion = "33.0.1"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

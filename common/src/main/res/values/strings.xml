@@ -8,4 +8,6 @@
     <string name="popularity_label">Popularity</string>
     <string name="vote_count_label">Vote Count</string>
     <string name="vote_average_label">Vote Average</string>
+    <string name="navigate_to_author_label">Navigate to author</string>
+    <string name="author_page_title">Author</string>
 </resources>

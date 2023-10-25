@@ -45,7 +45,11 @@ fun SearchView(
         },
         label = { Text(stringResource(id = R.string.search_movie_hint)) },
         modifier = modifier
-            .padding(16.dp)
+            .padding(
+                start = 16.dp,
+                end = 16.dp,
+                bottom = 8.dp
+            )
             .fillMaxWidth(),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Search,

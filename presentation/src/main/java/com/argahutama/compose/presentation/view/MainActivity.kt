@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.argahutama.compose.common.theme.MyApplicationTheme
 import com.argahutama.compose.common.theme.route.Screen
+import com.argahutama.compose.presentation.view.page.AuthorPage
 import com.argahutama.compose.presentation.view.page.MovieDetailsPage
 import com.argahutama.compose.presentation.view.page.NowPlayingMovieListPage
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,9 +38,14 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.NowPlayingMovieList.route
                         ) {
-                            NowPlayingMovieListPage {
-                                navController.navigate(Screen.MovieDetails.createRoute(it))
-                            }
+                            NowPlayingMovieListPage(
+                                navigateToDetail = {
+                                    navController.navigate(Screen.MovieDetails.createRoute(it))
+                                },
+                                navigateToAuthor = {
+                                    navController.navigate(Screen.Author.route)
+                                }
+                            )
                         }
                         composable(
                             route = Screen.MovieDetails.route,
@@ -51,6 +57,11 @@ class MainActivity : ComponentActivity() {
                         ) {
                             val id = it.arguments?.getString("id").orEmpty()
                             MovieDetailsPage(id)
+                        }
+                        composable(
+                            route = Screen.Author.route
+                        ) {
+                            AuthorPage()
                         }
                     }
                 }
