@@ -41,7 +41,7 @@ fun AuthorPage(
     ) {
         Box {
             AsyncImage(
-                model = "https://avatars.githubusercontent.com/u/58361416?v=4",
+                model = state.value?.imageUrl.orEmpty(),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
