@@ -45,7 +45,7 @@ fun MovieCardItem(
             )
             Spacer(modifier = Modifier.height(8.dp))
             AsyncImage(
-                model = "https://image.tmdb.org/t/p/w500${movie.posterPath}",
+                model = movie.posterPath,
                 contentDescription = movie.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

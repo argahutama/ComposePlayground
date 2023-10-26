@@ -19,7 +19,7 @@ fun MovieDetailHeader(movie: MovieEntity?) {
     movie?.let {
         Column {
             AsyncImage(
-                model = "https://image.tmdb.org/t/p/w500${movie.posterPath}",
+                model = movie.posterPath,
                 contentDescription = it.title,
                 modifier = Modifier
                     .fillMaxWidth()

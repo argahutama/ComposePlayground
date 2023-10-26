@@ -8,7 +8,7 @@ fun mapMovieDtoToEntity(movieDto: MovieDto?) =
     else MovieEntity(
         id = movieDto.id.orEmpty(),
         backdropPath = movieDto.backdropPath.orEmpty(),
-        posterPath = movieDto.posterPath.orEmpty(),
+        posterPath = "https://image.tmdb.org/t/p/w500${movieDto.posterPath.orEmpty()}",
         genreIds = movieDto.genreIds.orEmpty(),
         originalTitle = movieDto.originalTitle.orEmpty(),
         title = movieDto.title.orEmpty(),
