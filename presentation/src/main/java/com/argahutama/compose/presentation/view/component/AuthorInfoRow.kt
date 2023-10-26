@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AuthorInfoRow(
+    modifier: Modifier = Modifier,
     name: String,
     email: String,
     occupation: String,
@@ -20,7 +21,7 @@ fun AuthorInfoRow(
     city: String
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
